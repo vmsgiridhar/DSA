@@ -1,0 +1,38 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+Created on Sat Apr 24 14:20:15 2021
+
+@author: z003z7n
+"""
+arr = [1,2,3,1,5,5]
+
+# removing duplicates
+temp = []
+for i in arr:
+    if i not in temp:
+        temp.append(i)
+
+print(temp)  
+
+# identifying duplicates
+duplicates = set([i for i in arr if arr.count(i) > 1])
+
+    
+print(duplicates)
+
+
+# identifying the duplicates - in place method without additional storage
+# only works for if elements in array are less than the size of the array.
+# failing case - arr = [1,2,3,1,6,6] - list index out of range.
+
+def duplicates_identifier(arr):
+    
+    for num in arr:
+        if arr[abs(num)] >= 0:
+            arr[abs(num)] = -arr[abs(num)]
+            print(num, arr)
+        else:
+            print('Repetition found {}'.format(str(abs(num))))
+
+duplicates_identifier(arr)
