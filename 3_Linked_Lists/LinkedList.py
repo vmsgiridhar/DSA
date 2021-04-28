@@ -51,7 +51,7 @@ class LinkedList:
     def size_of_linked_list(self):
         return self.numOfNode
     
-    # traversing a list
+    # traversing a list - O(n) running time complexity
     def traverse_linked_list(self):
         
         actual_node = self.head
@@ -59,6 +59,29 @@ class LinkedList:
         while actual_node is not None:
             print(actual_node.data)
             actual_node = actual_node.nextNode
+    
+    # remove function
+    def remove(self, data):
+        
+        if self.head is None:
+            return
+        
+        actual_node = self.head
+        previous_node = None
+        
+        while actual_node is not None and actual_node.data != data:
+            previous_node = actual_node 
+            actual_node = actual_node.nextNode 
+        
+        #search miss - Item is not there in list
+        if actual_node is None:
+            return
+        self.numOfNode = self.numOfNode - 1
+        if previous_node is None:
+            self.head = actual_node.nextNode 
+        else:
+            previous_node.nextNode = actual_node.nextNode 
+    
 
 # testing - 1
 ll1 = LinkedList()
@@ -66,5 +89,12 @@ ll1.insert_start(1)
 ll1.insert_start(2)
 ll1.insert_start(3)
 ll1.insert_end(4)
+ll1.insert_end('Giri')
+ll1.insert_end(2.0)
+print(ll1.size_of_linked_list())
 ll1.traverse_linked_list()
+ll1.remove('Giri')
+ll1.traverse_linked_list()
+print(ll1.size_of_linked_list())
+
     
