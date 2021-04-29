@@ -22,8 +22,35 @@ class DoublyLinkedList:
         self.tail = None
         self.numOfNodes = 0
     
-    def insert_at_start(self,data):
+    def insert(self,data):
         
+        #increase number of nodes
+        self.numOfNodes = self.numOfNodes + 1
+        
+        #assigning the data to node
+        newnode = Node(data)
+        
+        #if DoublyLinkedList is totally empty
+        if self.head == None:
+            self.head = newnode
+            self.tail = newnode
+        
+        #there is at least 1 item in the data structure
+        # we will keep inserting items at the end of the linked list
+        else:
+            newnode.prev = self.tail 
+            self.tail.next = newnode
+            self.tail = newnode
+        
+        # #if DoublyLinkedList is not empty
+        # elif self.head is not None and self.tail is not None:
+        #     existing_node = self.head
+        #     newnode.next = existing_node
+        #     existing_node.prev = newnode
+        #     self.head = newnode
+            
+    
+    def insert_at_end(self,data):
         #increase number of nodes
         self.numOfNodes = self.numOfNodes + 1
         
@@ -34,20 +61,15 @@ class DoublyLinkedList:
         if self.head == None and self.tail == None:
             self.head = newnode
             self.tail = newnode
-            
         
         #if DoublyLinkedList is not empty
-        elif self.head is not None and self.tail is not None:
-            existing_node = self.head
-            newnode.next = existing_node
-            existing_node.prev = newnode
-            self.head = newnode
+        elif self.tail is not None:
+            existing_node = self.tail
+            existing_node.next = newnode
+            newnode.prev = existing_node
+            self.tail = newnode
             
-    
-    def insert_at_end(self,data):
-        pass
-            
-    def traverse_dll(self):
+    def traverse_forward_dll(self):
         
         actual_node = self.head
         
@@ -55,16 +77,29 @@ class DoublyLinkedList:
             print(actual_node.data)
             actual_node = actual_node.next
     
+    def traverse_backward_dll(self):
+        
+        actual_node = self.tail
+        
+        while actual_node is not None:
+            print(actual_node.data)
+            actual_node = actual_node.prev
+    
     def size_of_linked_list(self):
         return self.numOfNodes
             
 #implementation
 dll = DoublyLinkedList()
-dll.insert_at_start(1)
-dll.insert_at_start(2)
-dll.insert_at_start(3)
+dll.insert(1)
+dll.insert(2)
+dll.insert(3)
+dll.insert('A')
+dll.insert(4)
+dll.insert(5)
 print('Traversing the Doubly Linked List')
-dll.traverse_dll()
+dll.traverse_forward_dll()
+print('Traversing the Doubly Linked List')
+dll.traverse_backward_dll()
 print('Total items in the Doubly Linked List')   
 print(dll.size_of_linked_list())
             
