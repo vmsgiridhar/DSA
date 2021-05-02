@@ -46,7 +46,8 @@ class LinkedList:
             actual_node = actual_node.nextNode
         
         actual_node.nextNode = new_node
-        
+     
+    #get_middle_node
     def get_middle_node(self):
         
         fast_pointer = self.head 
@@ -92,8 +93,20 @@ class LinkedList:
             self.head = actual_node.nextNode 
         else:
             previous_node.nextNode = actual_node.nextNode 
+            
+    #reverse a linked list
+    def reverse(self):
+        curr_node = self.head 
+        prev = None
+        next = None
+        
+        while curr_node is not None:
+            next = curr_node.nextNode 
+            curr_node.nextNode = prev 
+            prev = curr_node 
+            curr_node = next 
     
-
+        self.head = prev 
 # testing - 1
 ll1 = LinkedList()
 ll1.insert_start(1)
@@ -112,5 +125,8 @@ print('Testing middle node')
 print(ll1.traverse_linked_list())
 print('Middle Node is:')
 print(ll1.get_middle_node().data)
+print('reverse')
+ll1.reverse()
+ll1.traverse_linked_list()
 
     
