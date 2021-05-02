@@ -102,6 +102,24 @@ print('Traversing the Doubly Linked List')
 dll.traverse_backward_dll()
 print('Total items in the Doubly Linked List')   
 print(dll.size_of_linked_list())
+
+# comparing the performance of an array to a linked list
+import time
+
+arr = []
+
+start = time.time()
+
+for i in range(50000):
+    arr.insert(0, i)
+
+print('Time taken to insert in an Array: {}'.format(time.time() - start))
+
+start = time.time()
+
+for i in range(50000):
+    dll.insert(i)
+print('Time taken to insert in an DoblleLinkedList: {}'.format(time.time() - start))
             
     
     
