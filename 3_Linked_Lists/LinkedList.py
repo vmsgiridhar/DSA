@@ -47,6 +47,17 @@ class LinkedList:
         
         actual_node.nextNode = new_node
         
+    def get_middle_node(self):
+        
+        fast_pointer = self.head 
+        slow_pointer = self.head 
+        
+        while fast_pointer.nextNode and fast_pointer.nextNode.nextNode:
+            fast_pointer = fast_pointer.nextNode.nextNode
+            slow_pointer = slow_pointer.nextNode 
+        
+        return slow_pointer
+        
     # size of linked list
     def size_of_linked_list(self):
         return self.numOfNode
@@ -96,5 +107,10 @@ ll1.traverse_linked_list()
 ll1.remove('Giri')
 ll1.traverse_linked_list()
 print(ll1.size_of_linked_list())
+# testing middle node
+print('Testing middle node')
+print(ll1.traverse_linked_list())
+print('Middle Node is:')
+print(ll1.get_middle_node().data)
 
     
