@@ -106,7 +106,7 @@ class LinkedList:
             prev = curr_node 
             curr_node = next 
     
-        self.head = prev 
+        self.head = prev
 # testing - 1
 ll1 = LinkedList()
 ll1.insert_start(1)
