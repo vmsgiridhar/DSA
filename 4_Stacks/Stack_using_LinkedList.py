@@ -63,6 +63,7 @@ st1.pop()
 print('No of Elements in Stack: {}'.format(st1.num_of_nodes))
 print('Traversing the list:')
 st1.traverse()
+
             
             
         
