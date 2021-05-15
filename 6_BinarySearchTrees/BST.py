@@ -14,6 +14,15 @@ class Node:
         self.right_node = None
         self.left_node = None
 
+class TreeComparator:
+    def compareTrees(self, node1, node2):
+        if not node1 or not node2:
+            return node1 == node2
+        
+        if node1.data is not node2.data:
+            return False
+        
+        return self.compareTrees(node1.left_node, node2.left_node) and self.compareTrees(node1.right_node, node2.right_node)
 
 class BinarySearchTree:
 
@@ -144,3 +153,15 @@ if __name__ == '__main__':
 
     bst.remove(3)
     bst.traverse()
+    
+    bst2 = BinarySearchTree()
+    bst2.insert(5)
+    bst2.insert(3)
+    bst2.insert(6)
+    bst2.insert(1)
+
+    bst2.remove(3)
+    
+    print('Comparing both Trees:')
+    comparator = TreeComparator()
+    print(comparator.compareTrees(bst.root, bst2.root))
