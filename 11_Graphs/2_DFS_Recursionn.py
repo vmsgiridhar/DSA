@@ -18,11 +18,10 @@ def Depth_First_Search(start):
     
     # We will be using a Stack to traverse nodes in BFS
     # Stack follows LIFO
+    # Let's use Recursion here.
     
     stack = [start]
     
-    # iteration
-    # We will process all the nodes till the stack is empty
     while(stack):
         
         # we will pop the Last element
@@ -33,7 +32,7 @@ def Depth_First_Search(start):
         # we will appennd the adjacent Vertices to Stack
         for n in visited.adjacent_vertices:
             if not n.visited:
-                stack.append(n)
+                Depth_First_Search(n)
     
 
 if __name__ == '__main__':
